@@ -1,0 +1,271 @@
+$h: 48px;
+
+$w: 400px;
+$mobileW: 300px;
+
+.header-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 180px;
+}
+
+///
+/// EMAIL INPUT
+///
+
+.input-box {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  margin-left: -$w * 0.5;
+  width: $w;
+
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid rgba(#000000, 0.5);
+    background: rgba(#fefff1, 0.75);
+    border-radius: 5px;
+    outline: none;
+    color: #080405;
+    font-size: 20px;
+  }
+
+  .email {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 24px;
+    color: #575555;
+    text-transform: uppercase;
+    transition: 0.5s;
+  }
+
+  .error {
+    position: absolute;
+    right: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 48px;
+    color: red;
+  }
+
+  .shutter-box {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(#000000, 0);
+
+    .shutter {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-$h);
+      background: #000;
+      transition: all 1.5s ease;
+    }
+
+    .show {
+      animation: shutter-anim 8000ms ease-in-out forwards;
+    }
+  }
+}
+
+@keyframes shutter-anim {
+  10% {
+    transform: translateY(0px);
+  }
+
+  90% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-$h);
+  }
+}
+
+.input-box input:valid ~ .email,
+.input-box input:focus ~ .email {
+  color: #080405;
+  transform: translateX(-110px);
+  font-weight: 800;
+}
+
+.input-box input:valid,
+.input-box input:focus {
+  border: 2px solid rgba(#000000, 0.75);
+}
+
+//
+// BUTTON
+//
+
+.button-container {
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  width: $w;
+  margin-left: $w * -0.5;
+  height: $h;
+  overflow: hidden;
+  border: 2px solid;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  transition: 0.5s;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  z-index: 100;
+
+  .mas {
+    position: absolute;
+    color: #000;
+    text-align: center;
+    width: 101%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    position: absolute;
+    font-size: 14px;
+    margin-top: 14px;
+    letter-spacing: 1px;
+    overflow: hidden;
+    font-weight: bold;
+  }
+
+  button {
+    width: 100%;
+    height: 100%;
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    background: #000;
+    -webkit-mask: url('../../img/nature-sprite.png');
+    mask: url('../../img/nature-sprite.png');
+    -webkit-mask-size: 2300% 100%;
+    mask-size: 2300% 100%;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    -webkit-animation: ani-reverse 0.7s steps(22) forwards;
+    animation: ani-reverse 0.7s steps(22) forwards;
+
+    &:hover {
+      -webkit-animation: ani 0.7s steps(22) forwards;
+      animation: ani 0.7s steps(22) forwards;
+    }
+  }
+}
+
+@keyframes ani {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+
+@keyframes ani-reverse {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+
+///
+/// TABLET SCREEN
+///
+
+@media (max-height: 820px) {
+  .header-container {
+    height: 160px;
+
+    .input-box {
+      top: 30px;
+    }
+
+    .button-container {
+      top: 85px;
+    }
+  }
+}
+
+///
+/// PHONE SCREEN
+///
+
+@media (max-width: 414px) and (max-height: 914px) {
+  .header-container {
+    height: 180px !important;
+  }
+  .input-box {
+    top: 55px !important;
+    margin-left: -$mobileW * 0.5;
+    width: $mobileW;
+
+    input {
+      font-size: 16px;
+    }
+
+    .email {
+      font-size: 20px;
+    }
+
+    .error {
+      font-size: 44px;
+    }
+  }
+
+  .input-box input:valid ~ .email,
+  .input-box input:focus ~ .email {
+    transform: translateY(-40px);
+    margin-left: -2px;
+  }
+
+  .button-container {
+    top: 110px !important;
+    width: $mobileW;
+    margin-left: $mobileW * -0.5;
+  }
+}
+
+@media (max-height: 414px) and (max-width: 914px) {
+  .header-container {
+    height: 125px !important;
+  }
+
+  .input-box {
+    top: 10px !important;
+
+    input {
+      font-size: 16px;
+    }
+
+    .email {
+      font-size: 20px;
+    }
+
+    .error {
+      font-size: 44px;
+    }
+  }
+
+  .button-container {
+    top: 65px !important;
+  }
+}

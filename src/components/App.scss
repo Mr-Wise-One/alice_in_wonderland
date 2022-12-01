@@ -1,0 +1,10 @@
+$bg: url('../img/alice-bg-minimal.jpg');
+
+.content {
+  overflow: hidden;
+  position: relative;
+  background: $bg;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
