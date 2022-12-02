@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
 
-export default function useClientSystem() {
-  const [clientSystem, setClientSystem] = useState('');
+export default function useOperationSystem() {
+  const [operationSystem, setOperationSystem] = useState('');
 
   useEffect(() => {
     const ua = navigator.userAgent;
 
     if (/android/i.test(ua)) {
-      setClientSystem('Android');
+      setOperationSystem('Android');
     } else if (
       /iPad|iPhone|iPod/.test(ua) ||
       (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
     ) {
-      setClientSystem('iOS');
+      setOperationSystem('iOS');
     } else {
-      setClientSystem('Other');
+      setOperationSystem('Other');
     }
   }, []);
 
-  return clientSystem;
+  return operationSystem;
 }

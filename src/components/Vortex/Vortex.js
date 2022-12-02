@@ -1,13 +1,13 @@
 import React, { useEffect, useContext } from 'react';
 import UserContext from '../Hooks/UserContext';
 import useWindowSize from '../Hooks/useWindowSize';
-import useClientSystem from '../Hooks/useClientSystem';
+import useOperationSystem from '../Hooks/useOperationSystem';
 import './Vortex.scss';
 
 const Vortex = () => {
   let range = 0;
   const size = useWindowSize();
-  const os = useClientSystem();
+  const os = useOperationSystem();
 
   const { showText, mail } = useContext(UserContext);
 

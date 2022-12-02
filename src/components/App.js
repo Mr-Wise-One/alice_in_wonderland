@@ -9,7 +9,7 @@ const App = () => {
   const [mail, setMail] = useState('');
 
   return (
-    <section className='content'>
+    <section className='app'>
       <UserContext.Provider value={{ showText, setShowText, mail, setMail }}>
         <Header />
         <Vortex />
